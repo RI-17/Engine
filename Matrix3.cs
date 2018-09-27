@@ -1,6 +1,10 @@
 using System;
 using System.Linq;
 
+
+//TODO: Replace array _matrix with separate fields
+
+
 namespace LibTest
 {
     public struct Matrix3
@@ -67,22 +71,34 @@ namespace LibTest
         public double this[int i, int j] => _matrix[i][j];
         
         public static Matrix3 operator +(Matrix3 m1, Matrix3 m2)
-            => new Matrix3(m1[0] + m2[0], m1[1] + m2[1], m1[2] + m2[2]);
-        
+        {
+            return new Matrix3(m1[0] + m2[0], m1[1] + m2[1], m1[2] + m2[2]);
+        }
+
         public static Matrix3 operator -(Matrix3 m1, Matrix3 m2)
-            => new Matrix3(m1[0] - m2[0], m1[1] - m2[1], m1[2] - m2[2]);
-        
+        {
+            return new Matrix3(m1[0] - m2[0], m1[1] - m2[1], m1[2] - m2[2]);
+        }
+
         public static Matrix3 operator *(Matrix3 m1, double a)
-            => new Matrix3(m1[0] * a, m1[1] * a, m1[2] * a);
-        
+        {
+            return new Matrix3(m1[0] * a, m1[1] * a, m1[2] * a);
+        }
+
         public static Matrix3 operator *(Matrix3 m1, int a)
-            => new Matrix3(m1[0] * a, m1[1] * a, m1[2] * a);
-        
+        {
+            return new Matrix3(m1[0] * a, m1[1] * a, m1[2] * a);
+        }
+
         public static Matrix3 operator *(double a, Matrix3 m1)
-            => new Matrix3(m1[0] * a, m1[1] * a, m1[2] * a);
-        
+        {
+            return new Matrix3(m1[0] * a, m1[1] * a, m1[2] * a);
+        }
+
         public static Matrix3 operator *(int a, Matrix3 m1)
-            => new Matrix3(m1[0] * a, m1[1] * a, m1[2] * a);
+        {
+            return new Matrix3(m1[0] * a, m1[1] * a, m1[2] * a);
+        }
 
         public static Matrix3 operator *(Matrix3 m1, Matrix3 m2)
         {
@@ -90,21 +106,23 @@ namespace LibTest
         }
         
         public override string ToString()
-            => _matrix[0] + "\n" + _matrix[1] + "\n" + _matrix[2];
+        {
+            return $"{_matrix[0]}\n{_matrix[1]}\n{_matrix[2]}";
+        }
 
         #endregion
         
         public Matrix3 Transposed()
-            => new Matrix3(new Vector3(_matrix[0][0], _matrix[1][0], _matrix[2][0]), 
-                           new Vector3(_matrix[0][1], _matrix[1][1], _matrix[2][1]),
-                           new Vector3(_matrix[0][2], _matrix[1][2], _matrix[2][2]));
-        
-
-        public void Transpose()
-            => this = Transposed();
+        {
+            return new Matrix3(new Vector3(_matrix[0][0], _matrix[1][0], _matrix[2][0]),
+                               new Vector3(_matrix[0][1], _matrix[1][1], _matrix[2][1]),
+                               new Vector3(_matrix[0][2], _matrix[1][2], _matrix[2][2]));
+        }
 
 
-        public Matrix3 Opposite()
-            => Transposed() * (1 / Determinant);
+        public void Transpose() => this = Transposed();
+
+
+        public Matrix3 Opposite() => Transposed() * (1 / Determinant);
     }
 }

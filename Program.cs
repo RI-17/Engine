@@ -8,7 +8,7 @@ namespace LibTest
     {
         public static void Main(string[] args)
         {
-            /*var m = new Matrix2(new Vector2(2,3), new Vector2(6,4));
+            var m = new Matrix2(new Vector2(2,3), new Vector2(6,4));
             Console.WriteLine(m);
             Console.WriteLine(m.Determinant);
             m *= 4;
@@ -22,7 +22,7 @@ namespace LibTest
             Console.WriteLine(m3.Determinant);
             
             Console.WriteLine();
-            Console.WriteLine(m2.Opposite());*/
+            Console.WriteLine(m2.Opposite());
             
             var v1 = new Vector2(1,2);
             var v2 = new Vector2(2,4);
